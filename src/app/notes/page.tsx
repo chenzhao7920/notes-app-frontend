@@ -5,8 +5,7 @@ import { CreateButton } from '../../components/CreateButton';
 
 export default async function NotesPage() {
   const response = await NotesAPI.getNotes();
-  const data = await response.json();
-  const notes = data.data;
+  const notes = response.data;
 
   return (
     <main className="min-h-screen bg-gray-50">

@@ -2,11 +2,11 @@
 
 import { Note } from '@/lib/api/notes';
 import { Button, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
-import { NotesAPI } from '@/lib/api/notes';
 import { useState } from 'react';
 import { NoteModal } from './NoteModal';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { deleteNoteAction } from '@/app/notes/actions';
 
 interface NoteTableProps {
   notes: Note[];
@@ -19,10 +19,9 @@ export function NoteTable({ notes: initialNotes }: NoteTableProps) {
 
   const handleDelete = async (id: string) => {
     try {
-      await NotesAPI.deleteNote(id);
+      await deleteNoteAction(id);
       setNotes(notes.filter(note => note._id !== id));
       toast.success('Note deleted successfully');
-      router.refresh(); // Refresh the server component
     } catch (error) {
       toast.error('Failed to delete note');
     }
@@ -37,7 +36,6 @@ export function NoteTable({ notes: initialNotes }: NoteTableProps) {
       note._id === updatedNote._id ? updatedNote : note
     ));
     setEditingNote(null);
-    router.refresh(); // Refresh the server component
   };
 
   const formatDate = (dateString: string) => {

@@ -1,9 +1,10 @@
 'use client';
 
-import { Note, NotesAPI, CreateNoteData } from '@/lib/api/notes';
+import { Note, CreateNoteData } from '@/lib/api/notes';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input, Textarea } from "@nextui-org/react";
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { createNoteAction, updateNoteAction } from '@/app/notes/actions';
 
 interface NoteModalProps {
   isOpen: boolean;
@@ -28,10 +29,10 @@ export function NoteModal({ isOpen, onClose, onSave, initialData }: NoteModalPro
     setIsLoading(true);
     try {
       const response = initialData
-        ? await NotesAPI.updateNote(initialData._id, formData)
-        : await NotesAPI.createNote(formData);
+        ? await updateNoteAction(initialData._id, formData)
+        : await createNoteAction(formData);
 
-      onSave(response.data.data);
+      onSave(response.data);
       toast.success(initialData ? 'Note updated successfully' : 'Note created successfully');
       onClose();
     } catch (error) {
