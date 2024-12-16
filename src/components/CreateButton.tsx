@@ -12,7 +12,7 @@ export function CreateButton() {
 
   const handleSave = (note: Note) => {
     setIsModalOpen(false);
-    router.refresh(); // Refresh the page to show the new note
+    router.push('/') // Refresh the page to show the new note with server data
   };
 
   return (
