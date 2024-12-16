@@ -1,8 +1,5 @@
-import { Button } from "@nextui-org/react";
+import { redirect } from 'next/navigation'
+
 export default function Home() {
-  return (
-    <Button>
-         hello world
-    </Button>
-  );
+  redirect('/notes')
 }
