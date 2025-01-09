@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
+
 import { NotesAPI } from '@/lib/api/notes';
 import { NoteTable } from '../../components/NoteTable';
 import { CreateButton } from '../../components/CreateButton';
