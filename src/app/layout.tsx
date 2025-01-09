@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import "./globals.css";
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const metadata: Metadata = {
   title: "Notes App",
   description: "A simple notes application",
