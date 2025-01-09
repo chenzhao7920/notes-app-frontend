@@ -31,7 +31,7 @@ export class ApiService {
 }
 
 // Response types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T> {
   success: boolean;
   httpCode: number;
   message: string;

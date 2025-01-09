@@ -36,6 +36,7 @@ export function NoteModal({ isOpen, onClose, onSave, initialData }: NoteModalPro
       toast.success(initialData ? 'Note updated successfully' : 'Note created successfully');
       onClose();
     } catch (error) {
+      console.log(error)
       toast.error(initialData ? 'Failed to update note' : 'Failed to create note');
     } finally {
       setIsLoading(false);

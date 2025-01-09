@@ -5,7 +5,6 @@ import { Button, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell
 import { useState } from 'react';
 import { NoteModal } from './NoteModal';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
 import { deleteNoteAction } from '@/app/notes/actions';
 
 interface NoteTableProps {
@@ -15,7 +14,6 @@ interface NoteTableProps {
 export function NoteTable({ notes: initialNotes }: NoteTableProps) {
   const [notes, setNotes] = useState<Note[]>(initialNotes);
   const [editingNote, setEditingNote] = useState<Note | null>(null);
-  const router = useRouter();
 
   const handleDelete = async (id: string) => {
     try {
@@ -23,6 +21,7 @@ export function NoteTable({ notes: initialNotes }: NoteTableProps) {
       setNotes(notes.filter(note => note._id !== id));
       toast.success('Note deleted successfully');
     } catch (error) {
+      console.log(error)
       toast.error('Failed to delete note');
     }
   };

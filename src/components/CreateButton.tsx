@@ -3,14 +3,13 @@
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
 import { NoteModal } from "./NoteModal";
-import { Note } from "@/lib/api/notes";
 import { useRouter } from "next/navigation";
 
 export function CreateButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
-  const handleSave = (note: Note) => {
+  const handleSave = () => {
     setIsModalOpen(false);
     router.push('/') // Refresh the page to show the new note with server data
   };
